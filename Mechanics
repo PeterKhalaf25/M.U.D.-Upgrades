@@ -4,7 +4,7 @@ console.WriteLine("Hello World");
 
 //Player Class
 
-Class Player
+public class Player
 {
     int moveSpd = 100;
     int atkDmg = 100;
@@ -13,33 +13,51 @@ Class Player
     int abilityDmg = 100;
     int dodgeDistance = 100;
 
-    public void moveSpdBuff(float modifier)
+    public void statMod(float modifier, string stat)
     {
-        moveSpd = modifier*moveSpd;
+        switch (stat)
+        {
+            case moveSpdStat :
+                moveSpd = moveSpd*modifier;
+
+            case atkDmgStat :
+                atkDmg = atkDmg*modifier;
+
+            case atkSpdStat :
+                atkSpd = atkSpd*modifier;
+
+            case abilityHasteStat :
+                abilityHaste = abilityHaste*modifier;
+
+            case abilityDmgStat :
+                abilityDmg = abilityDmg*modifier;
+
+            case dodgeDistanceStat :
+                dodgeDistance = dodgeDistance*modifier;
+        }
+    }
+}
+
+public class Weapon
+{
+    bool ranged = true;
+
+    int meleeDmg = 100;
+    int rangeDmg = 100;
+    int atkRange = 100;
+    int fireRate = 100;
+    // int durability = 100;
+    int ammo = 100;
+
+    public void dmgMod(float modifier)
+    {
+        if (ranged)
+        {
+            rangeDmg = rangeDmg*modifier;
+        } else
+        {
+            meleeDmg = meleeDmg*modifier;
+        }
     }
 
-    public void atkDmgBuff(float modifier)
-    {
-        atkDamage = atkDamage*modifier;
-    }
-
-    public void atkSpdBuff(float modifier)
-    {
-        atkSpd = atkSpd*100;
-    }
-
-    public void hasteBuff(float modifier)
-    {
-        abilityHaste = abilityHaste*modifier;
-    }
-
-    public void abilityDmgBuff(float modifier)
-    {
-        abilityDmg = abilityDmg*modifier;
-    }
-
-    public void dodgeBuff(float modifier)
-    {
-        dodgeDistance = dodgeDistance*modifier
-    }
 }
